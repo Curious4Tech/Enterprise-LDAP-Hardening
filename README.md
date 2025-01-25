@@ -151,12 +151,15 @@ After implementing the changes, verify your configuration:
 # Check Domain Controller settings
 Get-ADDomainController -Filter * | Select-Object Name, LDAPChannelBinding, LDAPSigning
 
-# Test LDAP connectivity
+# Test LDAP connectivity 
 Test-NetConnection -ComputerName 192.168.2.15 -Port 389
+
+Test-NetConnection -ComputerName 192.168.2.15 -Port 636  
 ```
 Replace **192.168.2.15** with your own IP address.
 
-![image](https://github.com/user-attachments/assets/bd01b76a-1078-410c-9a45-ee9b69440afa)
+![image](https://github.com/user-attachments/assets/c8fe2958-b5a9-4f4b-85ed-52dfae3b44e5)
+
 
 ## Troubleshooting
 
@@ -183,21 +186,17 @@ Get-Counter '\NTDS\LDAP Active Threads'
 
 ![p5](https://github.com/user-attachments/assets/8236e4a2-f598-4790-9f82-9632750a1b14)
 
-2. **Connection Failures**
-   ```powershell
-   # Test LDAP connectivity
-   ldp.exe -l <DC_HOSTNAME> -t 389
-   ```
-
 ## Best Practices
 
 ### Security Recommendations
 
 1. **Regular Monitoring**
-   ```powershell
+```powershell
    # Monitor LDAP events
-   Get-EventLog -LogName Security | Where-Object {$_.EventID -in @(2886,2887)}
-   ```
+  $ldapEventIDs = @(2886, 2887, 4624, 1644)
+ Get-EventLog -LogName Security | Where-Object {$_.EventID -in $ldapEventIDs}
+```
+![image](https://github.com/user-attachments/assets/f06a2fad-24d4-41e2-b998-a830dd7fc45e)
 
 2. **Backup Configuration**
    ```powershell
@@ -211,14 +210,6 @@ Get-Counter '\NTDS\LDAP Active Threads'
 - Document current settings
 - Prepare rollback plan
 - Monitor application compatibility
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch
-3. Submit pull request with detailed description
 
 ---
 
