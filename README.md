@@ -231,9 +231,9 @@ Event ID 1644: Expensive LDAP searche
 
 ## 📚 Additional Resources
 
-- [Microsoft Security Advisory](https://aka.ms/ldapsigning)
-- [Active Directory Best Practices](https://aka.ms/adbp)
-- [Windows Server Documentation](https://aka.ms/wsdocs)
+- [LDAP signing in Windows Server](https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/enable-ldap-signing-in-windows-server)
+- [Active Directory Best Practices](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)
+- [Windows Server Documentation](https://learn.microsoft.com/en-us/windows-server/)
 
 ---
 
