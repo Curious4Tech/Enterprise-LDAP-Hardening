@@ -63,10 +63,11 @@ Press Win + R, type gpmc.msc, and hit Enter.
 ```powershell
 # Create a new GPO or edit an existing one:
 Right-click your domain and select Create a GPO in this domain, and Link it here.
-
+```
 
 ![image](https://github.com/user-attachments/assets/d55ae525-5efa-490c-af41-c78f6c166975)
 
+```powershell
 Name the GPO (e.g., LDAP Channel Binding and Signing).
 ```
 
