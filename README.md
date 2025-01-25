@@ -56,14 +56,16 @@ Get-ADOptionalFeature -Filter * | Where-Object {
 ```powershell
 # Open Group Policy Management Console
 Press Win + R, type gpmc.msc, and hit Enter.
+```
 
+```powershell
 # Create a new GPO or edit an existing one:
 Right-click your domain and select Create a GPO in this domain, and Link it here.
 Name the GPO (e.g., LDAP Channel Binding and Signing).
-
+```
+```powershell
 # Navigate through:
 Computer Configuration > Administrative Templates > System > KDC (Kerberos Key Distribution Center)
-
 
 # Enable setting:
 "Domain controller: LDAP server channel binding token requirements" = Enabled
@@ -75,8 +77,7 @@ Computer Configuration > Administrative Templates > System > KDC (Kerberos Key D
 
 Right-click on the same GPO and select Edit.
 # In the same GPO, navigate to:
-Computer Configuration > 
-    Administrative Templates > Active Directory > Domain Controller >  LDAP
+Computer Configuration > Administrative Templates > Active Directory > Domain Controller >  LDAP
 
 # Enable setting:
 "Domain controller: LDAP server signing requirements" = Require signing
