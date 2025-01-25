@@ -193,6 +193,11 @@ Get-Counter '\NTDS\LDAP Active Threads'
 1. **Regular Monitoring**
 ```powershell
    # Monitor LDAP events
+Event ID 2886: LDAP signing is not enabled.
+Event ID 2887: Number of insecure LDAP binds performed.
+Event ID 4624: Logon events (filter for network logon type).
+Event ID 1644: Expensive LDAP searche
+
   $ldapEventIDs = @(2886, 2887, 4624, 1644)
  Get-EventLog -LogName Security | Where-Object {$_.EventID -in $ldapEventIDs}
 ```
@@ -201,8 +206,12 @@ Get-Counter '\NTDS\LDAP Active Threads'
 2. **Backup Configuration**
    ```powershell
    # Export GPO settings
-   Backup-GPO -Name "LDAP Security Settings" -Path "C:\GPOBackup"
+   
+   New-Item -ItemType Directory -Path "C:\GPOBackup" -Force
+   Backup-GPO -Name "LDAP Channel Binding and Signing" -Path "C:\GPOBackup"
    ```
+
+![image](https://github.com/user-attachments/assets/9393be6b-2cc3-4dd3-9e53-b3c3e42a5389)
 
 ### Implementation Guidelines
 
